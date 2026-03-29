@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; margin: 1rem; }
+.container { display: flex; gap: 1rem; }
+.main { flex: 1; }
+#messages { border: 1px solid #ddd; height: 60vh; overflow: auto; padding: 0.5rem; }
+.msg { margin-bottom: 0.5rem; }
+.meta { color: #666; font-size: 0.9rem; }
+#controls { margin-top: 0.5rem; display:flex; gap:0.5rem; }
+input[type=text] { flex: 1; padding: 0.5rem; }
+.sidebar { width: 220px; border-left: 1px solid #eee; padding-left: 1rem; }
+.sidebar h3 { margin-top: 0; }
+.user { padding: 0.25rem 0; border-bottom: 1px solid #f3f3f3; }
