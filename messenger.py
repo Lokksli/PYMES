@@ -4,6 +4,7 @@ import messages_db as mdb
 import users_db as udb
 
 
+
 class User:
     # user class with id and name
     def __init__(self, id: int, name: str):
