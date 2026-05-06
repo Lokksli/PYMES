@@ -6,6 +6,8 @@
   const usernameInput = document.getElementById('usernameInput');
   const setUsernameBtn = document.getElementById('setUsername');
   const currentUsername = document.getElementById('currentUsername');
+  const deleteMessagesBtn = document.getElementById('delete_mes');
+  const deleteMessageInput = document.getElementById('messageIdInput');
 
   // set username in session and update UI
   async function setUsername() {
@@ -112,7 +114,40 @@
     }
   }
 
+  // delete all messages from server
+  async function deleteMessages() {
+    if (!confirm('Are you sure you want to delete all messages?')) return;
+    try {
+      const res = await fetch('/delete_messages', {method: 'POST'});
+    }
+    catch (err) {
+      console.error('deleting messages', err)
+    }
+  }
+
+  // delete message by id
+  async function deleteMessageById(id) {
+  if (!confirm('Are you sure want to delete this message?')) return;
+
+  try {
+    id = deleteMessageInput.value.trim();
+    const res = await fetch('/delete_message', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id: id })
+    });
+
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error('delete message', err);
+  }
+}
+
   sendBtn.addEventListener('click', sendMessage);
+  deleteMessagesBtn.addEventListener('click', deleteMessageById);
   setUsernameBtn.addEventListener('click', setUsername);
   messageInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
   usernameInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') setUsername(); });

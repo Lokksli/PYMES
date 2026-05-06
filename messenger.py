@@ -3,8 +3,6 @@ import os
 import messages_db as mdb
 import users_db as udb
 
-
-
 class User:
     # user class with id and name
     def __init__(self, id: int, name: str):
@@ -83,12 +81,28 @@ class MessengerApp:
             except Exception:
                 users = []
             return jsonify(users)
+        
+        # deleting all messages (only for testin purpose)
+        @app.route('/delete_messages', methods=['POST'])
+        def delete_messages():
+            # delete all messages (for testing)
+            mdb.delete_all_messages()
+            return jsonify({'ok': True})
+        
+        #deleting a message by id for moderation
+        @app.route('/delete_message', methods=['POST'])
+        def delete_message_by_id():
+            data = request.get_json(force=True, silent=True) or {}
+            id = data.get('id')
+            if not id:
+                return jsonify({'error': 'message id required'}), 400
+            mdb.delete_message(id)
+            return jsonify({'ok': True})
 
 
 def create_app():
     # factory that returns the Flask app instance
     return MessengerApp().app
-
 
 if __name__ == '__main__':
     # run development server when executed directly

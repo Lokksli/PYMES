@@ -32,6 +32,21 @@ def add_message(username: str, message: str):
     conn.commit()
     conn.close()
 
+# delete all messages from the DB (for testing/demo purposes)
+def delete_all_messages():
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('DELETE FROM messages')
+    conn.commit()
+    conn.close()
+
+
+def delete_message(id: int):
+    conn = get_conn()
+    c = conn.cursor()
+    c.execute('DELETE FROM messages WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
 
 def get_recent_messages(limit: int = 100):
     # fetch recent messages (returns oldest-first)
