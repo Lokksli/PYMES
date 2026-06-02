@@ -32,8 +32,7 @@ class MessengerApp:
         @app.route('/')
         def index():
             # render main UI and show username
-            username = session.get('username')
-            return render_template('index.html', username=username)
+            return render_template('register.html')
 
         @app.route('/set_username', methods=['POST'])
         def set_username():
@@ -98,6 +97,12 @@ class MessengerApp:
                 return jsonify({'error': 'message id required'}), 400
             mdb.delete_message(id)
             return jsonify({'ok': True})
+        
+        @app.route('/register', methods=['GET'])
+        def register():
+            # render registration page
+            username = session.get('username')
+            return render_template('index.html', username=username)
 
 
 def create_app():
