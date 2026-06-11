@@ -1,11 +1,65 @@
-body { font-family: Arial, sans-serif; margin: 1rem; }
-.container { display: flex; gap: 1rem; }
+:root{
+	--bg:#f7fafc;
+	--card:#ffffff;
+	--muted:#6b7280;
+	--accent:#3b82f6;
+	--danger:#ef4444;
+}
+/* 2000s retro styling */
+body {
+	background: linear-gradient(180deg,#e6f0ff 0%, #cfe6ff 100%);
+	font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif;
+	color: #1a1a1a;
+	margin: 16px;
+}
+
+.wrap {
+	max-width: 980px;
+	margin: 0 auto;
+}
+
+.container { display: flex; gap: 16px; align-items: flex-start; }
 .main { flex: 1; }
-#messages { border: 1px solid #ddd; height: 60vh; overflow: auto; padding: 0.5rem; }
-.msg { margin-bottom: 0.5rem; }
-.meta { color: #666; font-size: 0.9rem; }
-#controls { margin-top: 0.5rem; display:flex; gap:0.5rem; }
-input[type=text] { flex: 1; padding: 0.5rem; }
-.sidebar { width: 220px; border-left: 1px solid #eee; padding-left: 1rem; }
-.sidebar h3 { margin-top: 0; }
-.user { padding: 0.25rem 0; border-bottom: 1px solid #f3f3f3; }
+
+#messages {
+	background: #fff url('/static/texture.png') repeat; /* optional texture if you add one */
+	border: 2px solid #9fb7ff;
+	height: 60vh;
+	overflow: auto;
+	padding: 12px;
+	box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+}
+
+.msg { margin-bottom: 10px; padding: 8px; background: #f6fbff; border: 1px solid #d3e9ff; }
+.meta { color: #666; font-size: 12px; margin-bottom:4px; }
+
+#controls { margin-top: 12px; display:flex; gap:8px; }
+input[type=text], input[type=number] { flex: 1; padding: 8px; border: 2px solid #c7ddff; background: linear-gradient(#ffffff, #e8f3ff); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); }
+
+/* Beveled buttons common in Noughties UI */
+button {
+	background: linear-gradient(#6fb0ff, #2b7be6);
+	color: white;
+	padding: 8px 12px;
+	border: 1px solid #1c5fb3;
+	border-bottom-width: 3px;
+	border-radius: 6px;
+	box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+	cursor: pointer;
+}
+button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,0.12); }
+
+.sidebar { width: 240px; }
+.user { padding: 6px 0; border-bottom: 1px solid #dfefff; }
+
+/* admin retro card */
+.admin { max-width: 900px; margin: 12px auto; background: linear-gradient(#ffffff,#eaf6ff); padding: 14px; border: 2px solid #9fb7ff; box-shadow: 6px 6px 0 rgba(0,0,0,0.08); }
+.admin h2 { margin-top: 0; font-family: 'Impact', Charcoal, sans-serif; letter-spacing: 1px; }
+.admin-form { display:flex; gap:8px; align-items:center; margin-bottom: 12px; }
+.admin-form input[type=text] { flex: 1; padding: 8px; border: 2px solid #c7ddff; background: linear-gradient(#fff,#e8f3ff); }
+.words-list { display:flex; flex-direction:column; gap:8px; }
+.word { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:8px; background: linear-gradient(#ffffff,#f0fbff); border:1px solid #bfe0ff; }
+.word button { background: linear-gradient(#ff8a8a,#ff5a5a); border:1px solid #c64040; padding:6px 8px; }
+
+.meta.warn { color: #8b0000; font-weight: bold; }
+
