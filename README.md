@@ -10,7 +10,9 @@ Run locally:
    source .venv/bin/activate
    pip install -r requirements.txt
 
-2. Run the app:
+2. Install ollama local model llama3
+
+3. Run the app:
 
    python messenger.py
 
