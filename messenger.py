@@ -29,22 +29,7 @@ class MessengerApp:
             pass
 
         self.register_routes()
-        # start background moderator scanner
-        try:
-            import threading
-            def _scanner():
-                import time
-                while True:
-                    try:
-                        mod.scan_and_moderate_recent()
-                    except Exception:
-                        pass
-                    time.sleep(10)
-            t = threading.Thread(target=_scanner, daemon=True)
-            t.start()
-        except Exception:
-            pass
-
+       
     def register_routes(self):
         app = self.app
 

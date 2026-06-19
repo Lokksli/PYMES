@@ -17,7 +17,7 @@ def analyze_message_with_olama(message: str, timeout: float = 10.0) -> Optional[
 
     prompt = (
         "You are a content moderation assistant. "
-        "Analyze the message for bad words, hate speech, harassment, or explicit content. "
+        "Analyze the message for bad words, hate speech, harassment, or explicit content. But moderate only if it's clearly inappropriate. If the message is borderline or ambiguous, do not ban. Also just badwords without hate speech is acceptable\n\n"
         "Output ONLY a valid JSON object with these exact keys:\n"
         '  "ban": true or false\n'
         '  "reason": short string explaining why (or empty string)\n'

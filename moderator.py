@@ -102,24 +102,3 @@ if __name__ == '__main__':
     init()
 
 
-def scan_and_moderate_recent(limit: int = 200, ban_seconds: int = 300):
-    actions = []
-    try:
-        msgs = mdb.get_recent_messages(limit=limit)
-    except Exception:
-        return actions
-
-    for m in msgs:
-        try:
-            username = m.get('username')
-            message = m.get('message')
-            res = check_and_handle_message(username, message, ban_seconds=ban_seconds)
-            if res.get('action') == 'banned':
-                try:
-                    mdb.delete_message(m.get('id'))
-                except Exception:
-                    pass
-                actions.append({'id': m.get('id'), 'username': username, 'reason': res.get('reason')})
-        except Exception:
-            continue
-    return actions
